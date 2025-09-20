@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TrainCardView: View {
+    //variables
+    var iconName: String
+    var iconColor: Color
+    
     var body: some View {
         VStack(){
             
@@ -26,11 +30,11 @@ struct TrainCardView: View {
             
             Image(systemName: "tram.circle.fill")
                 .font(.system(size: 90, weight: .light, design: .default))
-                .foregroundColor(.green)
+                .foregroundColor(iconColor)
                 .aspectRatio(contentMode: .fit )
                 .frame(width: 120, height: 100)
             
-            Text("Tren Bala Hikari")
+            Text(iconName)
                 .font(.largeTitle)
                 .lineLimit(1)
                 .truncationMode(.middle) //cuando el texto está muy largo y tiene el LineLimit se pondrá ... en medio del texto
@@ -49,5 +53,5 @@ struct TrainCardView: View {
 }
 
 #Preview {
-    TrainCardView()
+    TrainCardView(iconName: "Tren Bala Hikari", iconColor: Color.green)
 }
