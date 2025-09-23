@@ -22,7 +22,7 @@ struct MeansOfTransportView: View {
     var body: some View {
         
         Label(name, systemImage: icon)
-            .modifier(CardViewModifier(bgColor: .green))
+            .modifier(CardViewModifier(bgColor: .transport))
             .rotationEffect(.degrees(labelPresionado()))
             .onTapGesture{
                 withAnimation(){
