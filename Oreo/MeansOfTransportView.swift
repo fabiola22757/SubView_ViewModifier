@@ -9,24 +9,30 @@ import SwiftUI
 
 struct MeansOfTransportView: View {
     //variables
-    var name: String
-    var icon: String
+    var name: String = "Automóvil"
+    var icon: String = "car"
+    //variable para botón
+    @State var pressed: Bool = false
+    
+    //función al dar clic
+    func labelPresionado() -> CGFloat{
+        return pressed ? 180 : 0
+    }
   
     var body: some View {
         
         Label(name, systemImage: icon)
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white)
-            .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color(red: 130/255, green: 130/255, blue: 130/255, opacity: 0.2), lineWidth: 2)
-            ).padding()
+            .modifier(CardViewModifier(bgColor: .green))
+            .rotationEffect(.degrees(labelPresionado()))
+            .onTapGesture{
+                withAnimation(){
+                    self.pressed.toggle()
+                }
+            }
         
     }
 }
 
 #Preview {
-    MeansOfTransportView(name: "Medio de Transporte", icon: "car")
+    MeansOfTransportView()
 }
