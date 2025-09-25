@@ -11,11 +11,16 @@ struct ContentView: View {
     //variables
     @State var cardSeleccionada: Int = -1
     @State var pressedPadre: Bool = false
+    @State var destino: String = ""
     
     var body: some View {
         ScrollView{
             ///
             Text("Content View \(cardSeleccionada)")
+            TextField("¿A dónde quieres viajar?", text: $destino)
+                .disableAutocorrection(true)
+                .autocapitalization(.allCharacters)
+            Text("Viajarás a \(destino)")
             ScrollView(.horizontal){
                 HStack{
                     MeansOfTransportView(pressed: $pressedPadre, name: "Avión", icon: "airplane", index: 0, selectedIndex: $cardSeleccionada)

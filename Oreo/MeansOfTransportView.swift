@@ -34,6 +34,14 @@ struct MeansOfTransportView: View {
                         self.pressed.toggle()
                     }
                 }
+            if pressed {
+                Image(systemName: "figure.run")
+                    .foregroundColor(.white)
+                    .padding(8)
+                    .background(Color.blue)
+                    .clipShape(Circle())
+                    .transition(.slide)
+            }
             
             Text("Index seleccionado es \(selectedIndex)")
         }
