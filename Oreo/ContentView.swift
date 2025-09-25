@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    //variables
+    @State var cardSeleccionada: Int = -1
+    @State var pressedPadre: Bool = false
+    
     var body: some View {
         ScrollView{
             ///
+            Text("Content View \(cardSeleccionada)")
             ScrollView(.horizontal){
                 HStack{
-                    MeansOfTransportView(name: "Avión", icon: "airplane")
-                    MeansOfTransportView(name: "Auto", icon: "car")
-                    MeansOfTransportView(name: "Autobus", icon: "bus")
-                    MeansOfTransportView(name: "Bote", icon: "sailboat")
+                    MeansOfTransportView(pressed: $pressedPadre, name: "Avión", icon: "airplane", index: 0, selectedIndex: $cardSeleccionada)
+                    MeansOfTransportView(pressed: $pressedPadre, name: "Auto", icon: "car", index: 1, selectedIndex: $cardSeleccionada)
+                    MeansOfTransportView(pressed: $pressedPadre, name: "Autobus", icon: "bus", index: 2, selectedIndex: $cardSeleccionada)
+                    MeansOfTransportView(pressed: $pressedPadre, name: "Bote", icon: "sailboat", index: 3, selectedIndex: $cardSeleccionada)
                 }
             }
             ///

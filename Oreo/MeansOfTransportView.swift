@@ -9,10 +9,13 @@ import SwiftUI
 
 struct MeansOfTransportView: View {
     //variables
-    var name: String = "Automóvil"
-    var icon: String = "car"
-    //variable para botón
-    @State var pressed: Bool = false
+    @Binding var pressed: Bool
+    
+    var name: String
+    var icon: String
+    var index: Int
+    
+    @Binding var selectedIndex: Int
     
     //función al dar clic
     func labelPresionado() -> CGFloat{
@@ -21,18 +24,23 @@ struct MeansOfTransportView: View {
   
     var body: some View {
         
-        Label(name, systemImage: icon)
-            .modifier(CardViewModifier(bgColor: .transport))
-            .rotationEffect(.degrees(labelPresionado()))
-            .onTapGesture{
-                withAnimation(){
-                    self.pressed.toggle()
+        VStack{
+            Label(name, systemImage: icon)
+                .modifier(CardViewModifier(bgColor: .transport))
+                .rotationEffect(.degrees(labelPresionado()))
+                .onTapGesture{
+                    withAnimation(){
+                        selectedIndex = index
+                        self.pressed.toggle()
+                    }
                 }
-            }
+            
+            Text("Index seleccionado es \(selectedIndex)")
+        }
         
     }
 }
 
 #Preview {
-    MeansOfTransportView()
+    MeansOfTransportView(pressed: .constant(false), name: "Automóvil", icon: "car", index: 0, selectedIndex: .constant(-1))
 }
